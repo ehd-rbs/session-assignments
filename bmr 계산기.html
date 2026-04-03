@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <title>기초대사량 계산기</title>
+
+  <style>
+    body{
+        background-color : #eeff;
+        padding: 20px;
+    }
+
+    .box {
+        background-color: beige;
+        border: 2px solid #333;
+        width:250px;
+        border-radius: 10px;
+
+    }
+
+    button {
+        background-color: azure;
+        width: 10%
+    }
+    ~~~~ CSS로 디자인 입히기🦁
+  </style>
+</head>
+
+<body>
+    
+
+  <h2> 기초대사량 계산기 </h2>
+
+  키 : <input type="text" id="height"><br>
+  몸무게: <input type="text" id="weight"><br>
+  나이 : <input type="text" id="age"><br><br>
+
+  성별 : <select id="gender"><br>
+    <option value="">성별선택</option>    
+    <option value="male">남자</option>
+    <option value="female">여자</option>
+    </select>
+        <br>
+    <button onclick="calculate()">계산</button>
+
+    <p id="result">결과 : </p>
+
+  <script>
+    function calculate() {
+      const height = document.getElementById("height").value;
+      const weight = document.getElementById("weight").value;
+      const age = document.getElementById("age").value;
+      const gender = document.getElementById("gender").value;
+
+      let bmr;
+
+      if (gender === "male") {
+        bmr = 10 * weight + 6.25 * height - 5 * age + 5;
+      } else {
+        bmr = 10 * weight + 6.25 * height - 5 * age - 161;
+      }
+
+      document.getElementById("result").innerText =
+        "결과: " + Math.round(bmr) + " kcal"; //round는 반올림 함수
+    }
+  </script>
+</body>
+</html>
